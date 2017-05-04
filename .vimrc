@@ -122,7 +122,15 @@ nmap <F3> <Plug>AirlineSelectPrevTab
 let g:snips_author='yujicun'
 syntax on
 
-"{{{ whitespace 
+
+"PHP函数提示
+autocmd FileType php call AddPHPFuncList()
+function AddPHPFuncList()
+    set dictionary-=~/.vim/php_funclist.txt dictionary+=~/.vim/php_funclist.txt
+    set complete-=k complete+=k
+endfunction
+
+"{{{ whitespace 去除文件的行尾空白
 autocmd BufWritePre *.php call WhitespaceStripTrailing()
 autocmd BufWritePre *.lua call WhitespaceStripTrailing()
 ""}}}
